@@ -18,9 +18,11 @@ const FaqContent = () => {
     <div className={styles["container"]}>
       <h1 className={styles["container__title"]}>سوالات متداول</h1>
       <div className={styles["container__devider"]} />
-      {data?.map((item, index) => {
-        return <Card key={index} index={index + 1} data={item} />;
-      })}
+      <div className={styles["container__items"]}>
+        {data?.map((item, index) => {
+          return <Card key={index} index={index + 1} data={item} />;
+        })}
+      </div>
     </div>
   );
 };

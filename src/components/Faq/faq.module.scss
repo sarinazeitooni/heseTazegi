@@ -13,4 +13,9 @@
     height: 1px;
     width: 100%;
   }
+  &__items {
+    display: grid;
+    column-gap: 24px;
+    grid-template-columns: repeat(2, auto);
+  }
 }
