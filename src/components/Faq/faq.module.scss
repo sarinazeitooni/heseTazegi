@@ -1,0 +1,15 @@
+.container {
+  margin: 70px 60px;
+  &__title {
+    font-weight: 800;
+    font-size: 34px;
+    line-height: 40px;
+    color: #000000;
+    text-align: right;
+  }
+  &__devider {
+    border-top: 2px solid #e4e6ef;
+    height: 1px;
+    width: 100%;
+  }
+}
