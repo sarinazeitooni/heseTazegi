@@ -16,8 +16,7 @@ const Card = (props: { data: faqContent, index:number }) => {
         setExpanded(!expanded);
       }}
     >
-      <div className={styles["container__title"]}>{index}{data.title}</div>
-
+      <div className={styles["container__title"]}>{index}. {data.title}</div>
       <div dangerouslySetInnerHTML={{ __html: data.description }} />
     </div>
   );
