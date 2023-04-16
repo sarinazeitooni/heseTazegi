@@ -8,21 +8,33 @@
   margin-top: 32px;
   padding: 16px 24px;
   display: inline-block;
-  width: 648px;
+  max-width: 648px;
+  @media screen and (max-width: 900px) {
+    margin-bottom: 12px;
+  }
   cursor: pointer;
   &__title {
     font-weight: 600;
     font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     line-height: 24px;
+    @media screen and (max-width: 900px) {
+      font-size: 14px;
+    }
   }
-}
-.expanded {
-  height: max-content;
-  overflow: visible;
-  @extend .container;
-}
-.not-expanded {
-  height: 56px;
-  @extend .container;
-  overflow: hidden;
+  &__icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  &__description {
+    height: 0;
+    overflow: hidden;
+  }
+  &__expanded-description {
+    border-top: 1px solid #efefef;
+    margin-top: 12px;
+    height: fit-content;
+  }
 }

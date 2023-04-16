@@ -1,5 +1,5 @@
 import React from "react";
-import './globals.css';
+import "./globals.css";
 import header from "./images/header.png";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FaqContent from "./components/Faq";

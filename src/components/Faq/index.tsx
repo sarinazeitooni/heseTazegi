@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { faqContent } from "../../utils/faq/types";
 import Card from "./card";
 import styles from "./faq.module.scss";
+import share from "../../images/share.png";
 
 const FaqContent = () => {
   const [data, setData] = useState<faqContent[]>([]);
@@ -16,7 +17,16 @@ const FaqContent = () => {
 
   return (
     <div className={styles["container"]}>
-      <h1 className={styles["container__title"]}>سوالات متداول</h1>
+      <div className={styles["container__title-container"]}>
+        <div>
+          <h1>سوالات متداول</h1>
+          
+        </div>
+        <div className={styles["container__title-container__icon"]}>
+          <img src={share} alt="share" />
+        </div>
+      </div>
+
       <div className={styles["container__devider"]} />
       <div className={styles["container__items"]}>
         {data?.map((item, index) => {
