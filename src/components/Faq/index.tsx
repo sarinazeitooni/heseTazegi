@@ -18,22 +18,25 @@ const FaqContent = () => {
     axios
       .get("https://api-dev.hesetazegi.com/FAQ/List")
       .then((res: AxiosResponse) => {
-        let sectionOne = [];
-        let sectionTwo = [];
-        for (let index = 1; index < res?.data?.content?.items.length; index++) {
+        let sectionOne: faqContent[] = [];
+        let sectionTwo: faqContent[] = [];
+        res.data.content.items.forEach((item: faqContent, index: number) => {
+          item.order = index + 1;
           if (index % 2 === 0) {
-            sectionOne.push(res?.data?.content?.items[index]);
-          } else sectionTwo.push(res?.data?.content?.items[index]);
-        }
+            sectionOne.push(item);
+          } else {
+            sectionTwo.push(item);
+          }
+        })
         setData({ sectionOne, sectionTwo, both: res?.data?.content?.items });
         setIsLoading(false);
-      });
+      }).catch((err) => { console.error(err) })
   }, []);
 
   return (
     <>
       {isLoading ? (
-        <></>
+        <div className={styles['loader-container']}><div className={styles['loader-container__loader']} /></div>
       ) : (
         <div className={styles["container"]}>
           <div className={styles["container__title-container"]}>
@@ -53,18 +56,19 @@ const FaqContent = () => {
           <div className={styles["container__devider"]} />
           <div className={styles["container__items-mobile"]}>
             {data.both?.map((item, index) => {
+              console.log(item);
               return <Card key={index} index={index + 1} data={item} />;
             })}
           </div>
           <div className={styles["container__items-desktop"]}>
             <div className={styles["container__items-desktop__grow"]}>
               {data.sectionOne?.map((item, index) => {
-                return <Card key={index} index={index + 1} data={item} />;
+                return <Card key={index} index={item.order} data={item} />;
               })}
             </div>
             <div className={styles["container__items-desktop__grow"]}>
               {data.sectionTwo?.map((item, index) => {
-                return <Card key={index} index={index + 1} data={item} />;
+                return <Card key={index} index={item.order} data={item} />;
               })}
             </div>
           </div>

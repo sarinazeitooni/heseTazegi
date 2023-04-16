@@ -4,7 +4,8 @@ export type faqContent = {
   faquid: string;
   priority: number;
   groupID: number;
-  id: string;
+  id: number;
   language: string;
   title: string;
+  order: number;
 };
