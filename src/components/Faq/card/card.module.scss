@@ -3,11 +3,12 @@
   color: #3a3a3a;
   direction: rtl;
   box-shadow: 0px 4px 16px rgba(137, 137, 137, 0.1);
+  &:first-of-type{
+    margin-top: 32px;
+  }
   border-radius: 8px;
   margin-bottom: 24px;
-  margin-top: 32px;
   padding: 16px 24px;
-  display: inline-block;
   max-width: 648px;
   width: 100%;
   @media screen and (max-width: 900px) {

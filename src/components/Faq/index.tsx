@@ -7,6 +7,7 @@ import share from "../../images/share.png";
 import BreadCrumb from "../BreadCrumb";
 
 const FaqContent = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<{
     sectionOne: faqContent[];
     sectionTwo: faqContent[];
@@ -25,45 +26,51 @@ const FaqContent = () => {
           } else sectionTwo.push(res?.data?.content?.items[index]);
         }
         setData({ sectionOne, sectionTwo, both: res?.data?.content?.items });
+        setIsLoading(false);
       });
   }, []);
 
   return (
-    <div className={styles["container"]}>
-      <div className={styles["container__title-container"]}>
-        <div>
-          <h1>سوالات متداول</h1>
-          <BreadCrumb
-            list={[
-              { label: "صفحه اصلی" },
-              { label: "سوالات متداول", link: "/faq" },
-            ]}
-          />
+    <>
+      {isLoading ? (
+        <></>
+      ) : (
+        <div className={styles["container"]}>
+          <div className={styles["container__title-container"]}>
+            <div>
+              <h1>سوالات متداول</h1>
+              <BreadCrumb
+                list={[
+                  { label: "صفحه اصلی" },
+                  { label: "سوالات متداول", link: "/faq" },
+                ]}
+              />
+            </div>
+            <div className={styles["container__title-container__icon"]}>
+              <img src={share} alt="share" />
+            </div>
+          </div>
+          <div className={styles["container__devider"]} />
+          <div className={styles["container__items-mobile"]}>
+            {data.both?.map((item, index) => {
+              return <Card key={index} index={index + 1} data={item} />;
+            })}
+          </div>
+          <div className={styles["container__items-desktop"]}>
+            <div className={styles["container__items-desktop__grow"]}>
+              {data.sectionOne?.map((item, index) => {
+                return <Card key={index} index={index + 1} data={item} />;
+              })}
+            </div>
+            <div className={styles["container__items-desktop__grow"]}>
+              {data.sectionTwo?.map((item, index) => {
+                return <Card key={index} index={index + 1} data={item} />;
+              })}
+            </div>
+          </div>
         </div>
-        <div className={styles["container__title-container__icon"]}>
-          <img src={share} alt="share" />
-        </div>
-      </div>
-
-      <div className={styles["container__devider"]} />
-      <div className={styles["container__items-mobile"]}>
-        {data.both?.map((item, index) => {
-          return <Card key={index} index={index + 1} data={item} />;
-        })}
-      </div>
-      <div className={styles["container__items-desktop"]}>
-        <div>
-          {data.sectionOne?.map((item, index) => {
-            return <Card key={index} index={index + 1} data={item} />;
-          })}
-        </div>
-        <div>
-          {data.sectionTwo?.map((item, index) => {
-            return <Card key={index} index={index + 1} data={item} />;
-          })}
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

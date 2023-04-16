@@ -1,6 +1,10 @@
 .container {
   margin: 70px 48px 0 48px;
   padding-bottom: 70px;
+  @media screen and (max-width: 900px) {
+    margin: 32px 24px 0 24px;
+    padding-bottom: 32px;
+  }
   &__title-container {
     display: flex;
     justify-content: space-between;
@@ -9,7 +13,7 @@
       font-weight: 800;
       font-size: 34px;
       line-height: 40px;
-      
+
       margin-bottom: 16px;
       color: #000000;
       text-align: right;
@@ -43,9 +47,15 @@
     column-gap: 24px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     @media screen and (max-width: 900px) {
       display: none;
+    }
+    &__grow {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
   &__items-mobile {
