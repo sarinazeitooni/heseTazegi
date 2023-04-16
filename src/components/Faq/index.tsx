@@ -4,6 +4,7 @@ import { faqContent } from "../../utils/faq/types";
 import Card from "./card";
 import styles from "./faq.module.scss";
 import share from "../../images/share.png";
+import BreadCrumb from "../BreadCrumb";
 
 const FaqContent = () => {
   const [data, setData] = useState<{
@@ -32,6 +33,12 @@ const FaqContent = () => {
       <div className={styles["container__title-container"]}>
         <div>
           <h1>سوالات متداول</h1>
+          <BreadCrumb
+            list={[
+              { label: "صفحه اصلی" },
+              { label: "سوالات متداول", link: "/faq" },
+            ]}
+          />
         </div>
         <div className={styles["container__title-container__icon"]}>
           <img src={share} alt="share" />

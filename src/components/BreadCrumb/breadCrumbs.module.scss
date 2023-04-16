@@ -1,0 +1,21 @@
+.breadcrumb-container {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  gap: 5px;
+  margin-bottom: 16px;
+  img {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  a {
+    color: #3a3a3a;
+  }
+  span {
+    &:first-of-type {
+      color: #b0bf24;
+    }
+  }
+}
