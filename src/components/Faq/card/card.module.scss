@@ -9,8 +9,10 @@
   padding: 16px 24px;
   display: inline-block;
   max-width: 648px;
+  width: 100%;
   @media screen and (max-width: 900px) {
     margin-bottom: 12px;
+    max-width: 100%;
   }
   cursor: pointer;
   &__title {
